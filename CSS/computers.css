@@ -1,0 +1,19 @@
+/* Specific styles for the Computers page */
+.course-heading {
+    background-color: #0052B4; 
+  }
+  
+  .grade-section h2 {
+    background-color: #F0F7FF; 
+  }
+  
+  .grade-section ul li a {
+    color: #0052B4; 
+  }
+  
+  /* Enhancements for visual interest */
+  .grade-section {
+    background-color: #F0F7FF; /* A neutral background for the content sections */
+    border-left: 4px solid #0052B4; /* A thematic border color */
+  }
+  

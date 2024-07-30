@@ -1,0 +1,45 @@
+.grades-container {
+    padding: 20px;
+  }
+  
+  .grade-section {
+    margin-bottom: 20px;
+  }
+  
+  .grade-section h2 {
+    background-color: #0052B4;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .grade-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .grade-section ul li a {
+    background-color: #f0f0f0;
+    color: #000;
+    padding: 5px 10px;
+    display: block;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 5px 0;
+  }
+  
+  .grade-section ul li a:hover {
+    background-color: #ddd;
+  }
+  .back-button-container button {
+    padding: 10px 20px;
+    margin: 20px;
+    background-color: #0052B4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.back-button-container button:hover {
+    background-color: #003884;
+}

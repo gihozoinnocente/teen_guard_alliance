@@ -1,0 +1,69 @@
+body {
+    background-color: #f4f4f2; /* A light, neutral background reminiscent of parchment */
+    color: #333; /* Dark text for readability */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A clear, readable font */
+  }
+  
+  .course-heading {
+    background-color: #FFDF00; /* A deep green, evoking the lush landscapes of Africa */
+    color: #fff; /* White text for clarity */
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #ddd; /* A subtle border for visual separation */
+  }
+  .back-button-container button {
+    padding: 10px 20px;
+    margin: 20px;
+    background-color: #0052B4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.back-button-container button:hover {
+    background-color: #003884;
+}
+
+  .grades-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Stack sections vertically */
+    align-items: center; /* Center-align the content for better readability */
+  }
+  
+  .grade-section {
+    background-color: #F0F7FF; /* A soft, earthy tone for each grade section */
+    border: 1px solid #ccc; /* A light border to define each section */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    margin-bottom: 20px;
+    width: 80%; /* Optimal reading width */
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* A subtle shadow for depth */
+  }
+  
+  .grade-section h2 {
+    color: #0052B4; /* Harmonize with the heading color */
+    border-bottom: 2px solid #ddd; /* A subtle line under the heading for definition */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .grade-section ul {
+    list-style: none; /* Remove default list styling */
+    padding: 0;
+  }
+  
+  .grade-section ul li a {
+    color: #333; /* Dark text for easy reading */
+    text-decoration: none; /* No underline */
+    padding: 5px 0; /* Spacing for touch targets */
+    display: block; /* Block level for easier click */
+  }
+  
+  .grade-section ul li a:hover,
+  .grade-section ul li a:focus {
+    background-color: #F0F7FF; /* A light hover state for interaction */
+    padding-left: 10px; /* Indent text on hover/focus for a dynamic effect */
+  }
+  

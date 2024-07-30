@@ -1,0 +1,18 @@
+.course-heading {
+    background-color: #FFDF00; /* A vibrant purple, encouraging creativity */
+    
+  }
+  
+  .grade-section h2 {
+    background-color: #0052B4; /* A lighter purple for sub-headings */
+  }
+  
+  .grade-section ul li a {
+    color: #0052B4; /* A deeper purple for links, ensuring readability */
+  }
+  
+  /* Optional: Background or border styles specifically for art.html */
+  .grades-container {
+    border-top: 5px solid #F0F7FF; /* Echoes the heading color */
+  }
+  

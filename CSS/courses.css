@@ -1,0 +1,118 @@
+/* Importing the Jost font family from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;700&display=swap');
+
+/* body {
+    background-color: #F0F7FF; 
+    color: #fff; 
+}
+
+.course-heading {
+    background-color: #0052B4; 
+    padding: 20px; 
+    text-align: center; 
+    margin-bottom: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 15px; 
+} */
+
+/* .course-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.course-box {
+    width: 250px; 
+    height: 142px; 
+    border: 1px solid #ccc;
+    margin: 10px;
+    text-align: center;
+    position: relative; 
+    overflow: hidden; 
+    background-color: #F0F7FF; 
+} */
+
+/* .course-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%; 
+    background-color: inherit; 
+    z-index: 0; }
+
+.course-box h2,
+.course-box .level-grade {
+    position: relative; 
+    z-index: 1;
+    color: #fff; 
+}
+
+.course-box h2 {
+    font-size: 18px; 
+    font-weight: 700;
+    margin-top: 5px; 
+    padding: 0 5px; 
+}
+
+.course-box .level-grade {
+    font-size: 12px; 
+    font-weight: 300;
+    position: absolute;
+    right: 5px; 
+    bottom: 5px; 
+}
+
+.course-box:nth-child(1) { background-color: #C50000; }
+.course-box:nth-child(2) { background-color: #018183; }
+.course-box:nth-child(3) { background-color: #FFDF00; }
+.course-box:nth-child(4) { background-color: #228B22; }
+.course-box:nth-child(5) { background-color: #000000; }
+.course-box:nth-child(6) { background-color: #C50000; } */
+
+
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .courseBox {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  

@@ -1,0 +1,61 @@
+/* English Page Specific Styles */
+.body {
+    background-color: #F0F7FF; /* Maintains a light and readable background */
+  }
+  
+  .course-heading {
+    background-color: #6A5ACD; /* A deep lavender indicating creativity and imagination */
+    color: #FFFFFF; /* White text for clarity */
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #FFFFFF; /* White border for a clean separation */
+  }
+  
+  .grades-container {
+    padding: 20px;
+  }
+  
+  .grade-section {
+    margin-bottom: 20px;
+    border-left: 5px solid #0052B4; /* Deep lavender border for visual consistency */
+  }
+  
+  .grade-section h2 {
+    background-color: #FFDF00; /* A lighter lavender for a soft appearance */
+    color: #FFFFFF; /* White text for readability */
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .grade-section ul {
+    list-style-type: none; /* Removes default bullet points for a clean look */
+    padding: 0;
+  }
+  
+  .grade-section ul li a {
+    background-color: #F0F0F0; /* Light grey background for links, easing the visual transition */
+    color: #0052B4; 
+    padding: 5px 10px;
+    display: block;
+    text-decoration: none; /* Removes underline from links for a cleaner appearance */
+    border-radius: 5px; /* Softens edges for a more approachable look */
+    margin: 5px 0; /* Ensures space between links for easy selection */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .grade-section ul li a:hover {
+    background-color: #DDD; /* Darkens the link background slightly on hover for interactive feedback */
+  }
+  .back-button-container button {
+    padding: 10px 20px;
+    margin: 20px;
+    background-color: #0052B4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.back-button-container button:hover {
+    background-color: #003884;
+}

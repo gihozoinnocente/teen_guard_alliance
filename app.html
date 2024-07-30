@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #messages { list-style-type: none; padding: 0; }
+        #messages li { padding: 8px; margin-bottom: 10px; background-color: #f4f4f4; border-radius: 5px; }
+        #chat-form { display: flex; }
+        #chat-form input { flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+        #chat-form button { padding: 10px; border: none; background-color: #28a745; color: white; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Chat Application</h1>
+    <ul id="messages"></ul>
+    <form id="chat-form">
+        <input id="message" autocomplete="off" /><button>Send</button>
+    </form>
+
+    <script>
+        var socket = io();
+
+        var form = document.getElementById('chat-form');
+        var input = document.getElementById('message');
+        var messages = document.getElementById('messages');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (input.value) {
+                socket.send(input.value);
+                input.value = '';
+            }
+        });
+
+        socket.on('message', function(msg) {
+            var item = document.createElement('li');
+            item.textContent = msg;
+            messages.appendChild(item);
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+    </script>
+</body>
+</html>

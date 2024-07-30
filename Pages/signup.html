@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/CSS/signup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.1/toastify.min.css">
+</head>
+
+<body>
+  <section id="signup-section">
+
+    <div id="registration">
+      <div id="side-image">
+        <!-- <img src="/Images/signup.jpg"> -->
+        <p class="title">CREATE YOUR ACCOUNT!!</p>
+        <p class="word">Hello! Women <br> Welcome to Teen Guard Alliance
+          <br> a platform which shall help you to know more about sexual health education.
+        </p>
+      </div>
+      <div id="form">
+        <div id="toast-container" class="toast-container"></div>
+        <h1 id="top" style="display: none;">Registration Form</h1>
+        <form id="reg-form">
+          <label>FirstName</label>
+          <input type="text" name="firstName" id="firstName">
+          <label>LastName</label>
+          <input type="text" name="lastName" id="lastName">
+          <!--               <label>Select your year level</label> -->
+          <!-- <select id="Dropdown">
+                <option disabled selected>Select current level year</option>
+                <option>Primary one</option>
+                <option>Primary two</option>
+                <option>Primary three</option>
+                <option>Primary four</option>
+                <option>Primary five</option>
+                <option>Primary six</option>
+                <option>Other</option>
+              </select> -->
+          <label>Email</label>
+          <input type="email" id="email">
+          <label>Password</label>
+          <input type="password" id="password">
+          <div id="hide" style="display: none;">
+            <p class="length">password should contain 7characters</p>
+            <p class="letter">password should contain atleast one letter</p>
+            <p class="number">password should contain atleast one number</p>
+            <p class="capital">password should contain atleast one capital letter</p>
+          </div>
+          <label>Confirm Password</label>
+          <input type="password" id="cpassword">
+          <label class="checkbox-label">
+            <input type="checkbox" value="terms">I agree terms&condition
+          </label>
+
+          <input type="submit" value="Register">
+          <p class="log">Already have an account?<a href="./login.html"><span>Login</span></a></p>
+
+        </form>
+        <p id="registrationMessage"></p>
+
+      </div>
+    </div>
+  </section>
+  <script src="/Javascript/signup.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.1/toastify.min.js"></script>
+</body>
+
+</html>

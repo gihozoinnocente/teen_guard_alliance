@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teen Guard Alliance</title>
+  <link rel="stylesheet" href="../CSS/dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="logo items">
+        <img src="" alt="Logo" />
+      </div>
+
+      <a href="/Pages/dashboard.html" class="students">
+        <li class="items">
+          <i class="fa-solid fa-house"></i>
+          <p class="para">Home</p>
+        </li>
+      </a>
+      <a href="/Pages/dashboard_chats.html" class="students">
+        <li class="items">
+          <i class="fa-solid fa-user"></i>
+          <p class="para">Chats</p>
+        </li>
+      </a>
+
+      <a href="/Pages/dashboard_share_testimony.html" class="students">
+        <li class="items">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <p class="para">Share Testimony</p>
+        </li>
+      </a>
+
+      <a href="/Pages/dashboard_resources.html" class="students">
+        <li class="items">
+          <i class="fa-solid fa-envelope"></i>
+          <p class="para">Resources</p>
+        </li>
+      </a>
+
+      <a href="/Pages/dashboard_setting.html" class="students">
+        <li class="items">
+          <i class="fa-solid fa-calendar-days"></i>
+          <p class="para">Settings</p>
+        </li>
+      </a>
+
+      <li class="items logout-btn">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <p class="para">Sign Out</p>
+      </li>
+    </div>
+
+    <div class="toggler">
+      <i class="fa-solid fa-bars" id="toggle-bars"></i>
+      <i class="fa-solid fa-xmark" id="toggle-cross"></i>
+
+      <div id="search_bar">
+        <div class="left-end">
+          <input type="text" class="inputsearchbar" placeholder="Search Class, Document, Activities,..." />
+        </div>
+        <div class="right-end">
+          <i class="fas fa-sun" style="color: #0052B4;"></i>
+          <i class="fas fa-moon" style="color: #0052B4;"></i>
+          <i class="fas fa-bell"></i>
+          <i class="fas fa-cog"></i>
+          <img class="profile" src="/images/profilepicture.webp" alt="Profile Picture" />
+        </div>
+      </div>
+
+      <div class="form-box">
+        <form id="resourceForm">
+          <label for="subject">Subject <span class="required">*</span></label><br>
+          <input type="text" id="subject" name="subject" required><br>
+          <label for="introduction">Introduction <span class="required">*</span></label><br>
+          <input type="text" id="introduction" name="introduction" required><br>
+          <label for="body">Body <span class="required">*</span></label><br>
+          <textarea id="body" name="body" rows="4" required></textarea><br>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('resourceForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var formData = new FormData(this);
+
+      var data = {
+        subject: formData.get('subject'),
+        introduction: formData.get('introduction'),
+        body: formData.get('body')
+      };
+
+      fetch('http://127.0.0.1:3400/resources', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.message) {
+          alert(data.message);
+        } else {
+          alert('Resource submitted successfully!');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while submitting the resource.');
+      });
+    });
+  </script>
+  <script src="../Javascript/dashboard.js"></script>
+</body>
+
+</html>

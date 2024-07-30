@@ -1,0 +1,161 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  background-image: url('/images/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#signup-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#registration {
+  display: flex;
+  width: 50%; 
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#form {
+  flex: 0 0 65%;
+  padding: 20px;
+}
+
+#side-image {
+  flex: 0 0 35%; 
+  background-color: #32545a; 
+  color: #fff;
+  padding: 20px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.word {
+  text-align: center; 
+  line-height: 1.5;
+  padding-top: 30%;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.title{
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+label {
+  margin-top: 10px;
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  
+}
+
+input[type="submit"] {
+  width: 100%;
+  background-color: #32545a;
+  color: #FFDF00;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bold;
+}
+input[type="submit"]:hover{
+  background-color: #FFDF00;
+  color: #32545a;
+}
+
+.checkbox-label {
+  margin-top: 10px;
+  display: block;
+  font-size: 14px;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.log{
+  float: right;
+  margin-top: 2px;
+}
+.log span{
+  color: #32545a;
+  font-weight: bold;
+}
+#hide{
+  margin-top: 20px;
+  background-color: #ff1e00;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 25px;
+  
+}
+
+.toastify-toast {
+  border-radius: 5px;
+}
+.toastify-error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+.toastify-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+@media only screen and (max-width:768px){
+  #side-image{
+    display: none;
+  }
+  #form{
+    
+    color: black;
+    margin: auto;
+    border-radius: 5px;
+    margin-top: 26px;
+    margin-bottom: 26px;
+    width: 100%;
+  }
+  
+  label{
+    font-size: 14px;
+  }
+  #top{
+    display: block;
+  }
+  .log{
+    color: #0b0b0b;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .checkbox-label{
+    font-size: 12px;
+  }
+
+  }
+  
