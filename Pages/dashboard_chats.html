@@ -36,7 +36,7 @@
     <div class="container">
         <div class="sidebar">
             <div class="logo items">
-                <img src="../images/teen-guard-alliance-high-resolution-logo (2).jpeg" alt="" />       
+                <img src="../images/teen-guard-alliance-high-resolution-logo (2).jpeg" alt="" />
             </div>
             <a href="/Pages/dashboard.html" class="students">
                 <li class="items">
@@ -46,17 +46,17 @@
             </a>
             <a href="/Pages/dashboard_chats.html" class="students">
                 <li class="items">
-                  <i class="fa-solid fa-user"></i>
-                  <p class="para">Chats</p>
+                    <i class="fa-solid fa-user"></i>
+                    <p class="para">Chats</p>
                 </li>
-              </a>
-        
-              <a href="/Pages/dashboard_contact_message.html" class="students">
+            </a>
+
+            <a href="/Pages/dashboard_contact_message.html" class="students">
                 <li class="items">
-                  <i class="fa-solid fa-user"></i>
-                  <p class="para">Contact_Message</p>
+                    <i class="fa-solid fa-user"></i>
+                    <p class="para">Contact_Message</p>
                 </li>
-              </a>
+            </a>
             <a href="/Pages/dashboard_share_testimony.html" class="students">
                 <li class="items">
                     <i class="fa-solid fa-circle-exclamation"></i>
@@ -102,26 +102,26 @@
                     <tr>
                         <th>Name</th>
                         <th>Contact</th>
+                        <th>Email</th>
                         <th>Subject</th>
                         <th>Message</th>
-                        <th>Transferred</th>
-                        <th>Actions</th>
+                   
                     </tr>
                 </thead>
                 <tbody id="messagesContainer">
                     <!-- Messages will be inserted here -->
                 </tbody>
             </table>
-        
+
             <div id="providerModal" style="display:none;">
                 <h2>Select Healthcare Provider</h2>
                 <select id="providerSelect"></select>
                 <button onclick="sendChat()">Send</button>
                 <button onclick="closeProviderModal()">Cancel</button>
             </div>
-        
+
         </div>
-       
+
     </div>
 
     </div>
@@ -142,14 +142,10 @@
                     row.innerHTML = `
                         <td>${msg.name}</td>
                         <td>${msg.contact}</td>
+                        <td>${msg.email}</td>
                         <td>${msg.subject}</td>
                         <td>${msg.message}</td>
-                        <td>${msg.transferred_to_provider ? 'Yes' : 'No'}</td>
-                        <td>
-                            <button onclick="openProviderModal(${msg.id})" ${msg.transferred_to_provider ? 'disabled' : ''}>
-                                Send Chat
-                            </button>
-                        </td>
+                   
                     `;
                     container.appendChild(row);
                 });

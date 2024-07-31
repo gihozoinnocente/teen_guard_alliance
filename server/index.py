@@ -35,9 +35,9 @@ class User(db.Model):
 
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), nullable=False)
-    email = db.Column(db.String(255), nullable=False)
-    subject = db.Column(db.String(255), nullable=False)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
+    subject = db.Column(db.String(200), nullable=False)
     message = db.Column(db.Text, nullable=False)
 
     def __repr__(self):
@@ -60,10 +60,9 @@ class Chat(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
     contact = db.Column(db.String(200), nullable=True)
+    email= db.Column(db.String(200), nullable=True)
     subject = db.Column(db.String(200), nullable=False)
     message = db.Column(db.Text, nullable=False)
-    status = db.Column(db.String(50), default='Pending')  # e.g., Pending, Transferred
-    provider_id = db.Column(db.Integer)  # Assuming you have a provider model
 
     
 class Provider(db.Model):  # Ensure this model exists
@@ -146,15 +145,13 @@ def login():
         return jsonify({'message': 'Invalid credentials'}), 401
 
 
-
-
-
 @app.route('/send_chat', methods=['POST'])
 def send_chat():
     data = request.json
     new_message = Chat(
         name=data['name'],
         contact=data['contact'],
+        email=data['email'],
         subject=data['subject'],
         message=data['message']
     )
@@ -171,9 +168,9 @@ def get_chats():
             'id': msg.id,
             'name': msg.name,
             'contact': msg.contact,
+            'email':msg.email,
             'subject': msg.subject,
             'message': msg.message,
-            'transferred_to_provider': msg.status == 'Transferred'
         } for msg in messages])
     except Exception as e:
         app.logger.error(f'Error retrieving chats: {e}')
@@ -214,12 +211,14 @@ def transfer_chat():
         return jsonify({'error': 'Internal Server Error'}), 500
 
 
-
 @app.route('/send_message', methods=['POST'])
 def send_message():
     data = request.get_json()
-
+    
+    app.logger.debug(f'Received data: {data}')
+    
     if not data or not all(key in data for key in ('name', 'email', 'subject', 'message')):
+        app.logger.error('Invalid input')
         return jsonify({'error': 'Invalid input'}), 400
 
     new_message = Message(
@@ -229,10 +228,17 @@ def send_message():
         message=data['message']
     )
     
-    db.session.add(new_message)
-    db.session.commit()
-    
-    return jsonify({'message': 'Message sent successfully'}), 201
+    try:
+        db.session.add(new_message)
+        db.session.commit()
+        app.logger.info('Message sent successfully')
+        return jsonify({'message': 'Message sent successfully'}), 201
+    except Exception as e:
+        db.session.rollback()
+        app.logger.error(f'Error saving message: {e}')
+        return jsonify({'error': 'Internal Server Error'}), 500
+
+
 
 @app.route('/messages', methods=['GET'])
 def get_messages():
