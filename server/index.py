@@ -25,14 +25,6 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.firstName
 
-class Course(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    course_name = db.Column(db.String(255), nullable=False)
-    category = db.Column(db.String(255), nullable=False)
-    level = db.Column(db.Integer, nullable=False)
-
-    def __repr__(self):
-        return '<Course %r>' % self.course_name
 
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -58,6 +50,15 @@ class Resources(db.Model):
     introduction = db.Column(db.String(80), nullable=False)
     body = db.Column(db.Text, nullable=False)
 
+class Chat(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200), nullable=False)
+    contact = db.Column(db.String(200), nullable=True)
+    subject = db.Column(db.String(200), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+
+    def __repr__(self):
+        return f"Chat('{self.name}', '{self.contact}','{self.subject}', '{self.message}')"
 # Create all tables if they do not exist
 with app.app_context():
     db.create_all()
@@ -209,11 +210,35 @@ class ResourceEndpoint(Resource):
 
 api.add_resource(ResourceEndpoint, '/resources')
 
-@app.route('/logout', methods=['POST'])
-def logout():
-    # Clear all session data
-    session.clear()
-    return jsonify({'message': 'Logged out successfully'}), 200
+
+@app.route('/send_chat', methods=['POST'])
+def send_chat():
+    data = request.get_json()
+    if not data or not all(key in data for key in ('name','contact','subject', 'message')):
+        return jsonify({'error': 'Invalid input'}), 400
+
+    new_chat = Chat(
+        name=data['name'],
+        contact=data['contact'],
+        subject=data['subject'],
+        message=data['message']
+    )
+    
+    db.session.add(new_chat)
+    db.session.commit()
+    
+    return jsonify({'message': 'Chat sent successfully'}), 201
+
+@app.route('/chats', methods=['GET'])
+def get_chats():
+    chats = Chat.query.all()
+    return jsonify([{
+       
+        'name': chat.name,
+        'contact': chat.contact,
+        'subject': chat.subject,
+        'message': chat.message,
+    } for chat in chats])
 
 
 if __name__ == '__main__':

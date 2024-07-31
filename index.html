@@ -19,6 +19,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
 </head>
 
 <body>
@@ -37,6 +39,7 @@
                 <!-- <a href="#faq">F.A.Q</a> -->
                 <a href="#testimonial">Testimonial</a>
                 <a href="#contact">Contact</a>
+                <a href="#resources">Resources</a>
             </div>
 
             <!-- Sign up / Login -->
@@ -160,10 +163,10 @@
                 <br>
 
                 <div class="row">
-                    
+
                     <div class="column">
                         <div class="card">
-                            
+
                         </div>
                     </div>
 
@@ -182,7 +185,7 @@
                             </div>
                         </div>
                     </div> -->
-<!-- 
+                    <!-- 
                     <div class="column">
                         <div class="card">
                             <img src="/images/profile_picture.jpeg" alt="Mike" style="width:100%">
@@ -213,8 +216,30 @@
                     </div> -->
                 </div>
             </section>
-
+            <section>
+                <div>
+                    <button id="chatButton">Message</button>
+                    <div id="chatModal" class="chat-modal">
+                        <div class="chat-content">
+                            <span class="close-button">&times;</span>
+                            <h2>Want To Meet our Health care Provider ? Leave a message</h2>
+                            <form id="chatForm">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name">
+                                <label for="contact">Contact:</label>
+                                <input type="text" id="contact" name="contact">
+                                <label for="subject">Subject:</label>
+                                <input type="text" id="subject" name="subject" required>
+                                <label for="message">Message:</label>
+                                <textarea id="message" name="message" rows="4" required></textarea>
+                                <button type="submit">Send Message</button>
+                            </form>
+                        </div>
+                </div>
+            </section>
     </main>
+
+  
 
     <footer id="contact">
 
@@ -292,34 +317,80 @@
     });
 </script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('http://127.0.0.1:3400/testimonies')
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('http://127.0.0.1:3400/testimonies')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('testimoniesContainer');
+                container.innerHTML = '';
+                data.forEach(testimony => {
+                    container.innerHTML += `
+                        <div class="column">
+                            <div class="card">
+                                <img src="${testimony.picture}" alt="${testimony.name}" style="width:100%">
+                                <div class="container">
+                                    <h2>${testimony.name}</h2>
+                                    <p class="title">${testimony.position}</p>
+                                    <p>${testimony.message}</p>
+                                    <p>${testimony.email}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while fetching testimonies.');
+            });
+    });
+</script>
+
+<script>
+    // Get modal element
+    var modal = document.getElementById('chatModal');
+    var btn = document.getElementById('chatButton');
+    var span = document.getElementsByClassName('close-button')[0];
+
+    // Open modal
+    btn.onclick = function() {
+        modal.style.display = 'block';
+    }
+
+    // Close modal
+    span.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // Handle form submission
+    document.getElementById('chatForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var name = document.getElementById('name').value;
+        var contact = document.getElementById('contact').value;
+        var subject = document.getElementById('subject').value;
+        var message = document.getElementById('message').value;
+
+        fetch('http://127.0.0.1:3400/send_chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: name, contact: contact, subject: subject, message: message })
+        })
         .then(response => response.json())
         .then(data => {
-          const container = document.getElementById('testimoniesContainer');
-          container.innerHTML = '';
-          data.forEach(testimony => {
-            container.innerHTML += `
-              <div class="column">
-                <div class="card">
-                  <img src="${testimony.picture}" alt="${testimony.name}" style="width:100%">
-                  <div class="container">
-                    <h2>${testimony.name}</h2>
-                    <p class="title">${testimony.position}</p>
-                    <p>${testimony.message}</p>
-                    <p>${testimony.email}</p>
-                  </div>
-                </div>
-              </div>
-            `;
-          });
+            console.log('Success:', data);
+            modal.style.display = 'none';
         })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('An error occurred while fetching testimonies.');
+        .catch((error) => {
+            console.error('Error:', error);
         });
     });
-  </script>
-
-
+</script>
 </html>
