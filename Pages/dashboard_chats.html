@@ -1,132 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Application</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teen Guard Alliance</title>
+    <link rel="stylesheet" href="../CSS/dashboard.css" />
+    <link rel="stylesheet" href="../CSS/chats.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        .chat-modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
+        body {
+            font-family: Arial, sans-serif;
         }
-        .chat-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 10px;
-        }
-        .close-button {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close-button:hover,
-        .close-button:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        label {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        input, textarea {
-            padding: 10px;
-            margin-top: 5px;
+
+        .message {
             border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        button {
-            margin-top: 10px;
             padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
+            margin-bottom: 10px;
             border-radius: 5px;
-            cursor: pointer;
-            justify-content: left;
         }
-        button:hover {
-            background-color: #218838;
+
+        .message h3 {
+            margin: 0 0 5px;
+        }
+
+        .message p {
+            margin: 0;
         }
     </style>
 </head>
-<body>
-    <button id="chatButton">Message</button>
 
-    <div id="chatModal" class="chat-modal">
-        <div class="chat-content">
-            <span class="close-button">&times;</span>
-            <h2>Send a Message</h2>
-            <form id="chatForm">
-                <label for="subject">Subject:</label>
-                <input type="text" id="subject" name="subject" required>
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo items">
+                <img src="../images/teen-guard-alliance-high-resolution-logo (2).jpeg" alt="" />       
+            </div>
+            <a href="/Pages/dashboard.html" class="students">
+                <li class="items">
+                    <i class="fa-solid fa-house"></i>
+                    <p class="para">Home</p>
+                </li>
+            </a>
+            <a href="/Pages/dashboard_chats.html" class="students">
+                <li class="items">
+                  <i class="fa-solid fa-user"></i>
+                  <p class="para">Chats</p>
+                </li>
+              </a>
+        
+              <a href="/Pages/dashboard_contact_message.html" class="students">
+                <li class="items">
+                  <i class="fa-solid fa-user"></i>
+                  <p class="para">Contact_Message</p>
+                </li>
+              </a>
+            <a href="/Pages/dashboard_share_testimony.html" class="students">
+                <li class="items">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <p class="para">Share Testimony</p>
+                </li>
+            </a>
+            <a href="/Pages/dashboard_resources.html" class="students">
+                <li class="items">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p class="para">Resources</p>
+                </li>
+            </a>
+            <a href="/Pages/dashboard_setting.html" class="students">
+                <li class="items">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <p class="para">Settings</p>
+                </li>
+            </a>
+            <li class="items logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <p class="para">Sign Out</p>
+            </li>
         </div>
+
+        <div class="toggler">
+            <i class="fa-solid fa-bars" id="toggle-bars"></i>
+            <i class="fa-solid fa-xmark" id="toggle-cross"></i>
+            <div id="search_bar">
+                <div class="left-end">
+                    <input type="text" class="inputsearchbar" placeholder="Search Class, Document,Activities,..." />
+                </div>
+                <div class="right-end">
+                    <i class="fas fa-sun" style="color: #0052B4;"></i>
+                    <i class="fas fa-moon" style="color: #0052B4;"></i>
+                    <i class="fas fa-bell"></i>
+                    <i class="fas fa-cog"></i>
+                    <img class="profile" src="/images/profilepicture.webp" alt="" />
+                </div>
+            </div>
+            <h1>Manage Chat Messages</h1>
+            <table id="messagesTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Transferred</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="messagesContainer">
+                    <!-- Messages will be inserted here -->
+                </tbody>
+            </table>
+        
+            <div id="providerModal" style="display:none;">
+                <h2>Select Healthcare Provider</h2>
+                <select id="providerSelect"></select>
+                <button onclick="sendChat()">Send</button>
+                <button onclick="closeProviderModal()">Cancel</button>
+            </div>
+        
+        </div>
+       
+    </div>
+
     </div>
 
     <script>
-        // Get modal element
-        var modal = document.getElementById('chatModal');
-        var btn = document.getElementById('chatButton');
-        var span = document.getElementsByClassName('close-button')[0];
-
-        // Open modal
-        btn.onclick = function() {
-            modal.style.display = 'block';
-        }
-
-        // Close modal
-        span.onclick = function() {
-            modal.style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = 'none';
+        async function loadMessages() {
+            try {
+                const response = await fetch('http://127.0.0.1:3400/get_chats');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const messages = await response.json();
+                console.log('Loaded messages:', messages);  // Debugging line
+                const container = document.getElementById('messagesContainer');
+                container.innerHTML = '';
+                messages.forEach(msg => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${msg.name}</td>
+                        <td>${msg.contact}</td>
+                        <td>${msg.subject}</td>
+                        <td>${msg.message}</td>
+                        <td>${msg.transferred_to_provider ? 'Yes' : 'No'}</td>
+                        <td>
+                            <button onclick="openProviderModal(${msg.id})" ${msg.transferred_to_provider ? 'disabled' : ''}>
+                                Send Chat
+                            </button>
+                        </td>
+                    `;
+                    container.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error fetching messages:', error);
             }
         }
 
-        // Handle form submission
-        document.getElementById('chatForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var subject = document.getElementById('subject').value;
-            var message = document.getElementById('message').value;
+        async function openProviderModal(chatId) {
+            window.currentChatId = chatId;
+            try {
+                const response = await fetch('http://127.0.0.1:3400/get_providers');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const providers = await response.json();
+                console.log('Loaded providers:', providers);  // Debugging line
+                const providerSelect = document.getElementById('providerSelect');
+                providerSelect.innerHTML = '';
+                providers.forEach(provider => {
+                    providerSelect.innerHTML += `<option value="${provider.id}">${provider.first_name}</option>`;
+                });
 
-            fetch('http://127.0.0.1:3400/send_chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ subject: subject, message: message })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                modal.style.display = 'none';
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        });
+                document.getElementById('providerModal').style.display = 'block';
+            } catch (error) {
+                console.error('Error fetching providers:', error);
+            }
+        }
+
+        function closeProviderModal() {
+            document.getElementById('providerModal').style.display = 'none';
+        }
+
+        async function sendChat() {
+            const providerId = document.getElementById('providerSelect').value;
+            const chatId = window.currentChatId;
+
+            try {
+                const response = await fetch('http://127.0.0.1:3400/transfer_chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        provider_id: providerId
+                    })
+                });
+
+                if (response.ok) {
+                    alert('Chat sent successfully');
+                    loadMessages();  // Refresh the messages list
+                    closeProviderModal();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                alert('Error sending chat');
+                console.error('Error sending chat:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadMessages);
     </script>
+    <script src="../Javascript/dashboard.js"></script>
 </body>
+
 </html>

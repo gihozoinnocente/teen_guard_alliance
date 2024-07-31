@@ -27,14 +27,14 @@ header{
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
 }
 
-.logo{
+/* .logo{
     display: flex;
-    justify-content: center;
-}
+    justify-content: center; 
+} */
 
-.logo img{
-    width: 90px;
-}
+/* .logo img{
+    width: 0px;
+} */
 
 /* Menu */
 nav{
@@ -259,7 +259,7 @@ button:hover {
 }
 
 .hero_cont{
-    color: white;
+    color: #FFFF;
     display: flex;
     flex-direction: column;
     gap: 80px;
