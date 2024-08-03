@@ -11,10 +11,8 @@
 
 <body>
   <section id="signup-section">
-
     <div id="registration">
       <div id="side-image">
-        <!-- <img src="/Images/signup.jpg"> -->
         <p class="title">CREATE YOUR ACCOUNT!!</p>
         <p class="word">Hello! Women <br> Welcome to Teen Guard Alliance
           <br> a platform which shall help you to know more about sexual health education.
@@ -24,43 +22,36 @@
         <div id="toast-container" class="toast-container"></div>
         <h1 id="top" style="display: none;">Registration Form</h1>
         <form id="reg-form">
-          <label>FirstName</label>
-          <input type="text" name="firstName" id="firstName">
-          <label>LastName</label>
-          <input type="text" name="lastName" id="lastName">
-          <!--               <label>Select your year level</label> -->
-          <!-- <select id="Dropdown">
-                <option disabled selected>Select current level year</option>
-                <option>Primary one</option>
-                <option>Primary two</option>
-                <option>Primary three</option>
-                <option>Primary four</option>
-                <option>Primary five</option>
-                <option>Primary six</option>
-                <option>Other</option>
-              </select> -->
+          <label>First Name</label>
+          <input type="text" name="firstName" id="firstName" required>
+          <label>Last Name</label>
+          <input type="text" name="lastName" id="lastName" required>
           <label>Email</label>
-          <input type="email" id="email">
+          <input type="email" id="email" name="email" required>
           <label>Password</label>
-          <input type="password" id="password">
+          <input type="password" id="password" name="password" required>
           <div id="hide" style="display: none;">
-            <p class="length">password should contain 7characters</p>
-            <p class="letter">password should contain atleast one letter</p>
-            <p class="number">password should contain atleast one number</p>
-            <p class="capital">password should contain atleast one capital letter</p>
+            <p class="length">Password should contain at least 7 characters.</p>
+            <p class="letter">Password should contain at least one letter.</p>
+            <p class="number">Password should contain at least one number.</p>
+            <p class="capital">Password should contain at least one capital letter.</p>
           </div>
           <label>Confirm Password</label>
-          <input type="password" id="cpassword">
+          <input type="password" id="cpassword" name="cpassword" required>
+          <label>Role</label>
+          <select id="role" name="role" required>
+            <option name="role" value="teenager">Teenager</option>
+            <option name="role" value="educator">Educator</option>
+            <option name="role" value="health_care_giver">Health Care Giver</option>
+            <option name="role" value="admin">Admin</option>
+          </select>
           <label class="checkbox-label">
-            <input type="checkbox" value="terms">I agree terms&condition
+            <input type="checkbox" value="terms" required>I agree to the terms & conditions
           </label>
-
           <input type="submit" value="Register">
-          <p class="log">Already have an account?<a href="./login.html"><span>Login</span></a></p>
-
+          <p class="log">Already have an account? <a href="./login.html"><span>Login</span></a></p>
         </form>
         <p id="registrationMessage"></p>
-
       </div>
     </div>
   </section>

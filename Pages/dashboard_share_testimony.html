@@ -9,13 +9,89 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+ 
+    .form-box {
+      width: 60%;
+      background: #ffffff;
+      border: 1px solid #e1e1e1;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      box-sizing: border-box;
+      margin-left: 15%;
+    }
+
+
+    .form-box h1 {
+      margin-top: 0;
+      /* margin-bottom: 2px; */
+      font-size: 24px;
+      color: #333;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+
+
+    label {
+      display: block;
+      margin-bottom: 0px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .required {
+      color: red;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      align-self: center;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    input[type="submit"]:active {
+      transform: scale(1);
+    }
+  </style>
 </head>
 
 <body>
   <div class="container">
     <div class="sidebar">
       <div class="logo items">
-        <img src="" alt="" />
+        <img src="../images/teen-guard-alliance-high-resolution-logo (2).jpeg" alt="" />
       </div>
 
       <a href="/Pages/dashboard.html" class="students">
@@ -24,10 +100,17 @@
           <p class="para">Home</p>
         </li>
       </a>
-      <a href="/Pages/dashboard_chats.html" class="students">
+      <!-- <a href="/Pages/dashboard_chats.html" class="students">
         <li class="items">
           <i class="fa-solid fa-user"></i>
           <p class="para">Chats</p>
+        </li>
+      </a> -->
+
+      <a href="/Pages/dashboard_contact_message.html" class="students">
+        <li class="items">
+          <i class="fa-solid fa-user"></i>
+          <p class="para">Contact_Message</p>
         </li>
       </a>
 
@@ -42,13 +125,6 @@
         <li class="items">
           <i class="fa-solid fa-envelope"></i>
           <p class="para">Resources</p>
-        </li>
-      </a>
-      
-      <a href="/Pages/dashboard_setting.html" class="students">
-        <li class="items">
-          <i class="fa-solid fa-calendar-days"></i>
-          <p class="para">Settings</p>
         </li>
       </a>
 
@@ -75,6 +151,7 @@
         </div>
       </div>
       <div class="form-box">
+        <h1>Share your testimony here</h1>
         <form id="testimonyForm" action="http://localhost:3400/testimony" method="post" enctype="multipart/form-data">
           <label for="name">Name <span class="required">*</span></label><br>
           <input type="text" id="name" name="name" required><br>
@@ -84,39 +161,39 @@
           <textarea id="message" name="message" rows="4" required></textarea><br>
           <label for="email">Email Address <span class="required">*</span></label><br>
           <input type="email" id="email" name="email" required><br>
-          <label for="picture">Upload Picture:</label>
-          <input type="file" id="picture" name="picture" accept="image/*" required>
+          <!-- <label for="picture">Upload Picture:</label>
+          <input type="file" id="picture" name="picture" accept="image/*" required> -->
           <input type="submit" value="Submit">
         </form>
       </div>
     </div>
   </div>
   <script>
-    document.getElementById('testimonyForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        var formData = new FormData(this);
+    document.getElementById('testimonyForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var formData = new FormData(this);
 
-        fetch('http://127.0.0.1:3400/testimony', {
-            method: 'POST',
-            body: formData
-        })
+      fetch('http://127.0.0.1:3400/testimony', {
+        method: 'POST',
+        body: formData
+      })
         .then(response => {
-            // Check if the response is OK
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();  // Parse JSON
+          // Check if the response is OK
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();  // Parse JSON
         })
         .then(data => {
-            if (data.message) {
-                alert(data.message);  // Show error message
-            } else {
-                alert('Testimony submitted successfully!');
-            }
+          if (data.message) {
+            alert(data.message);  // Show error message
+          } else {
+            alert('Testimony submitted successfully!');
+          }
         })
         .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred while submitting the testimony.');
+          console.error('Error:', error);
+          alert('An error occurred while submitting the testimony.');
         });
     });
   </script>

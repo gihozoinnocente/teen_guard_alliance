@@ -40,6 +40,10 @@ img {
   /* margin-left: 20%; */
 }
 
+nav ul li a {
+  text-decoration: none;
+}
+
 .profile {
   height: 50%;
   width: 5%;
@@ -52,6 +56,8 @@ img {
   color: #ffffff;
   margin-left: 0px;
   padding: 10px 0px;
+  text-decoration: none;
+
 }
 
 .sidebar li {
@@ -72,6 +78,7 @@ img {
 .sidebar li:not(.logout-btn):hover {
   background: #000;
   color: aliceblue;
+  
 }
 
 .logout-btn {
@@ -360,6 +367,54 @@ img {
 .activity-details a {
   display: block;
   margin-top: 5px;
+}
+
+
+.chat-container {
+  width: 400px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-window {
+  height: 300px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow-y: scroll;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.chat-input button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background-color: #0056b3;
+}
+
+button {
+  margin-top: 10px;
 }
 
 /* Make it responsive */

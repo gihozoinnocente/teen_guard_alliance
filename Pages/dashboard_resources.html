@@ -10,12 +10,87 @@
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+<style>
+ 
+ .form-box {
+   width: 70%;
+   background: #ffffff;
+   border: 1px solid #e1e1e1;
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   padding: 10px;
+   box-sizing: border-box;
+   margin-left: 15%;
+ }
 
+
+ .form-box h1 {
+   margin-top: 0;
+   margin-bottom: 2px;
+   font-size: 24px;
+   color: #333;
+   text-align: center;
+ }
+
+ form {
+   display: flex;
+   flex-direction: column;
+ }
+
+
+
+ label {
+   display: block;
+   margin-bottom: 2px;
+   font-weight: 600;
+   color: #555;
+ }
+
+ .required {
+   color: red;
+ }
+
+ input[type="text"],
+ input[type="email"],
+ textarea {
+   width: 100%;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   padding: 10px;
+   font-size: 14px;
+   box-sizing: border-box;
+ }
+
+ textarea {
+   resize: vertical;
+ }
+
+ input[type="submit"] {
+   background-color: #007bff;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   padding: 6px;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s, transform 0.3s;
+   align-self: center;
+ }
+
+ input[type="submit"]:hover {
+   background-color: #0056b3;
+   transform: scale(1.05);
+ }
+
+ input[type="submit"]:active {
+   transform: scale(1);
+ }
+</style>
 <body>
   <div class="container">
     <div class="sidebar">
       <div class="logo items">
-        <img src="" alt="Logo" />
+        <img src="../images/teen-guard-alliance-high-resolution-logo (2).jpeg" alt="" />       
       </div>
 
       <a href="/Pages/dashboard.html" class="students">
@@ -24,10 +99,17 @@
           <p class="para">Home</p>
         </li>
       </a>
-      <a href="/Pages/dashboard_chats.html" class="students">
+      <!-- <a href="/Pages/dashboard_chats.html" class="students">
         <li class="items">
           <i class="fa-solid fa-user"></i>
           <p class="para">Chats</p>
+        </li>
+      </a> -->
+
+      <a href="/Pages/dashboard_contact_message.html" class="students">
+        <li class="items">
+          <i class="fa-solid fa-user"></i>
+          <p class="para">Contact_Message</p>
         </li>
       </a>
 
@@ -42,13 +124,6 @@
         <li class="items">
           <i class="fa-solid fa-envelope"></i>
           <p class="para">Resources</p>
-        </li>
-      </a>
-
-      <a href="/Pages/dashboard_setting.html" class="students">
-        <li class="items">
-          <i class="fa-solid fa-calendar-days"></i>
-          <p class="para">Settings</p>
         </li>
       </a>
 
@@ -76,6 +151,7 @@
       </div>
 
       <div class="form-box">
+        <h1>Share the resources</h1>
         <form id="resourceForm">
           <label for="subject">Subject <span class="required">*</span></label><br>
           <input type="text" id="subject" name="subject" required><br>

@@ -6,11 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kumenya App</title>
+    <!-- End of Async Drift Code -->
     <link rel="stylesheet" href="/CSS/index.css">
     <link rel="stylesheet" href="/CSS/index.css">
     <link rel="stylesheet" href="CSS/contact.css">
     <link rel="stylesheet" href="CSS/testimonial.css">
+    <!-- Start of Async Drift Code -->
+    <!-- Start of Async Drift Code -->
+    <script>
+        "use strict";
 
+        !function () {
+            var t = window.driftt = window.drift = window.driftt || [];
+            if (!t.init) {
+                if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+                t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on"],
+                    t.factory = function (e) {
+                        return function () {
+                            var n = Array.prototype.slice.call(arguments);
+                            return n.unshift(e), t.push(n), t;
+                        };
+                    }, t.methods.forEach(function (e) {
+                        t[e] = t.factory(e);
+                    }), t.load = function (t) {
+                        var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+                        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                        var i = document.getElementsByTagName("script")[0];
+                        i.parentNode.insertBefore(o, i);
+                    };
+            }
+        }();
+        drift.SNIPPET_VERSION = '0.3.1';
+        drift.load('2hx9tsr2ekau');
+    </script>
+    <!-- End of Async Drift Code -->
     <!-- DM sans font from google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -19,6 +48,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
 </head>
 
 <body>
@@ -28,7 +59,7 @@
         <nav>
             <!-- logo -->
             <div class="logo">
-                <a href="#"><img src="./images/teen-guard-alliance-logo.jpeg" width="90px" height="60px" alt=""></a>
+                <a href="#"><img src="./images/logo-color.png" width="70px" height="70px" alt=""></a>
             </div>
             <div class="navbar">
                 <a href="#">Home</a>
@@ -37,6 +68,7 @@
                 <!-- <a href="#faq">F.A.Q</a> -->
                 <a href="#testimonial">Testimonial</a>
                 <a href="#contact">Contact</a>
+                <a href="resources.html" id="resourcesLink">Resources</a>
             </div>
 
             <!-- Sign up / Login -->
@@ -64,10 +96,10 @@
                     <p><span class="big_l">Empowering Adolescent<br> Girls to Prevent Early Pregnancy<br> and Supporting
                             Teen Mothers</p>
                     <!-- hero buttons -->
-                    <div class="hero_buttons">
+                    <!-- <div class="hero_buttons">
                         <a href="" class="blue">Know more</a>
                         <a href="./Pages/signup.html" class="yellow">Get Started</a>
-                    </div>
+                    </div> -->
                 </div>
             </section>
 
@@ -160,10 +192,10 @@
                 <br>
 
                 <div class="row">
-                    
+
                     <div class="column">
                         <div class="card">
-                            
+
                         </div>
                     </div>
 
@@ -182,7 +214,7 @@
                             </div>
                         </div>
                     </div> -->
-<!-- 
+                    <!-- 
                     <div class="column">
                         <div class="card">
                             <img src="/images/profile_picture.jpeg" alt="Mike" style="width:100%">
@@ -213,47 +245,70 @@
                     </div> -->
                 </div>
             </section>
-
+            <!-- <section>
+                <div>
+                    <button id="chatButton">Message</button>
+                    <div id="chatModal" class="chat-modal">
+                        <div class="chat-content">
+                            <span class="close-button">&times;</span>
+                            <h2>Want To Meet our Health care Provider ? Leave a message</h2>
+                            <form id="chatForm">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name">
+                                <label for="contact">Contact:</label>
+                                <input type="text" id="contact" name="contact">
+                                <label for="email">Email:</label>
+                                <input type="text" id="email" name="email">
+                                <label for="subject">Subject:</label>
+                                <input type="text" id="subject" name="subject" required>
+                                <label for="message">Message:</label>
+                                <textarea id="message" name="message" required></textarea>
+                                <button type="submit">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+            </section> -->
     </main>
 
     <footer id="contact">
+        <div id="contact">
+            <h2 style="text-align: center; margin-bottom: 10%; text-decoration: underline orange;">CONTACT US</h2>
 
-        <h2 style="text-align: center; margin-bottom: 10%; text-decoration: underline orange;">CONTACT US</h2>
+            <div class="contact-details">
+                <div class="left-side">
+                    <div class="item">
+                        <img src="images/Envelope.svg" alt="Mail">
+                        <p><a href=""> teenguardalliance@gmail.com</a></p>
+                    </div>
 
-        <div class="contact-details">
-            <div class="left-side">
-                <div class="item">
-                    <img src="images/Envelope.svg" alt="Mail">
-                    <p><a href=""> teenguardalliance@gmail.com</a></p>
+                    <div class="item">
+                        <img src="images/Phone.svg" alt="Phone">
+                        <p>+250-783-742-810</p>
+                    </div>
+
+                    <div class="item">
+                        <img src="images/Location.svg" alt="Location">
+                        <p> <a href="">Kigali, Bumbogo, ALU, KG11Av</a></p>
+                    </div>
                 </div>
 
-                <div class="item">
-                    <img src="images/Phone.svg" alt="Phone">
-                    <p>+250-783-742-810</p>
-                </div>
-
-                <div class="item">
-                    <img src="images/Location.svg" alt="Location">
-                    <p> <a href="">Kigali, Bumbogo, ALU, KG11Av</a></p>
+                <div class="form-box">
+                    <form action="#" method="post" class="contact-form" id="contactForm">
+                        <label for="name">Name <span class="required">*</span></label><br>
+                        <input type="text" id="name" name="name" required><br>
+                        <label for="email">Email Address <span class="required">*</span></label><br>
+                        <input type="email" id="email" name="email" required><br>
+                        <label for="subject">Subject:</label><br>
+                        <input type="text" id="subject" name="subject"><br>
+                        <label for="message">Message <span class="required">*</span></label><br>
+                        <textarea id="message" name="message" rows="4" required></textarea><br>
+                        <input type="submit" value="Submit">
+                    </form>
                 </div>
             </div>
-
-            <div class="form-box">
-                <form action="#" method="post" class="contact-form" id="contactForm">
-                    <label for="name">Name <span class="required">*</span></label><br>
-                    <input type="text" id="name" name="name" required><br>
-                    <label for="email">Email Address <span class="required">*</span></label><br>
-                    <input type="email" id="email" name="email" required><br>
-                    <label for="subject">Subject:</label><br>
-                    <input type="text" id="subject" name="subject"><br>
-                    <label for="message">Message <span class="required">*</span></label><br>
-                    <textarea id="message" name="message" rows="4" required></textarea><br>
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
-        </div>
-        <p class="copy">&copy; 2024 Teen Guard Alliance. All rights reserved.</p>
+            <p class="copy">&copy; 2024 Teen Guard Alliance. All rights reserved.</p>
     </footer>
+    </div>
 
     <script src="Javascript/index.js"></script>
 </body>
@@ -292,34 +347,94 @@
     });
 </script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('http://127.0.0.1:3400/testimonies')
-        .then(response => response.json())
-        .then(data => {
-          const container = document.getElementById('testimoniesContainer');
-          container.innerHTML = '';
-          data.forEach(testimony => {
-            container.innerHTML += `
-              <div class="column">
-                <div class="card">
-                  <img src="${testimony.picture}" alt="${testimony.name}" style="width:100%">
-                  <div class="container">
-                    <h2>${testimony.name}</h2>
-                    <p class="title">${testimony.position}</p>
-                    <p>${testimony.message}</p>
-                    <p>${testimony.email}</p>
-                  </div>
-                </div>
-              </div>
-            `;
-          });
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('An error occurred while fetching testimonies.');
-        });
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('http://127.0.0.1:3400/testimonies')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('testimoniesContainer');
+                container.innerHTML = '';
+                data.forEach(testimony => {
+                    container.innerHTML += `
+                        <div class="column">
+                            <div class="card">
+                                <div class="container">
+                                    <h2>${testimony.name}</h2>
+                                    <p class="title">${testimony.position}</p>
+                                    <p>${testimony.message}</p>
+                                    <p>${testimony.email}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while fetching testimonies.');
+            });
     });
-  </script>
+</script>
 
+<script>
+    // Get modal element
+    var modal = document.getElementById('chatModal');
+    var btn = document.getElementById('chatButton');
+    var span = document.getElementsByClassName('close-button')[0];
+
+    // Open modal
+    btn.onclick = function () {
+        modal.style.display = 'block';
+    }
+
+    // Close modal
+    span.onclick = function () {
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // Handle form submission
+    document.getElementById('chatForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        var name = document.getElementById('name').value;
+        var contact = document.getElementById('contact').value;
+        var email = document.getElementById('email').value;
+        var subject = document.getElementById('subject').value;
+        var message = document.getElementById('message').value;
+
+        fetch('http://127.0.0.1:3400/send_chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: name, contact: contact, email: email, subject: subject, message: message })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                modal.style.display = 'none';
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    });
+</script>
+<script>
+    // Script to dynamically load content based on the page
+    document.addEventListener('DOMContentLoaded', function () {
+        // Example of dynamically loading content for the homepage
+        if (window.location.pathname === '/index.html') {
+            fetch('home.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('mainContent').innerHTML = html;
+                });
+        }
+    });
+</script>
 
 </html>
