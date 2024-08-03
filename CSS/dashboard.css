@@ -40,6 +40,10 @@ img {
   /* margin-left: 20%; */
 }
 
+nav ul li a {
+  text-decoration: none;
+}
+
 .profile {
   height: 50%;
   width: 5%;
@@ -52,6 +56,8 @@ img {
   color: #ffffff;
   margin-left: 0px;
   padding: 10px 0px;
+  text-decoration: none;
+
 }
 
 .sidebar li {
@@ -72,6 +78,7 @@ img {
 .sidebar li:not(.logout-btn):hover {
   background: #000;
   color: aliceblue;
+  
 }
 
 .logout-btn {

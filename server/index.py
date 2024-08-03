@@ -335,8 +335,64 @@ class ResourceEndpoint(Resource):
 
 api.add_resource(ResourceEndpoint, '/resources')
 
+@app.route('/get_resources', methods=['GET'])
+def get_resources():
+    try:
+        resources = Resources.query.all()
+        return jsonify([{
+            'id': res.id,
+            'subject': res.subject,
+            'introduction': res.introduction,
+            'body': res.body,
+        } for res in resources])
+    except Exception as e:
+        app.logger.error(f'Error retrieving resources: {e}')
+        return jsonify({'error': str(e)}), 500
 
+conversations = {}
+messages = {}
 
+@app.route('/send_messages', methods=['POST'])
+def send_messages():
+    data = request.get_json()
+    conversation_id = data.get('conversation_id')
+    message = data.get('message')
+    user_id = data.get('user_id')
+
+    if not conversation_id or not message or not user_id:
+        return jsonify({'error': 'Conversation ID, message, and user ID are required'}), 400
+
+    if conversation_id not in conversations:
+        conversations[conversation_id] = {'user_id': user_id, 'messages': []}
+
+    conversations[conversation_id]['messages'].append({'sender': 'user', 'message': message})
+    return jsonify({'message': message}), 200
+
+@app.route('/get_message', methods=['GET'])
+def get_message():
+    conversation_id = request.args.get('conversation_id')
+    if conversation_id in conversations:
+        return jsonify(conversations[conversation_id])
+    return jsonify({'error': 'Conversation not found'}), 404
+
+@app.route('/provider_dashboard', methods=['GET'])
+def provider_dashboard():
+    return jsonify(conversations)
+
+@app.route('/respond_message', methods=['POST'])
+def respond_message():
+    data = request.get_json()
+    conversation_id = data.get('conversation_id')
+    message = data.get('message')
+
+    if not conversation_id or not message:
+        return jsonify({'error': 'Conversation ID and message are required'}), 400
+
+    if conversation_id not in conversations:
+        return jsonify({'error': 'Conversation not found'}), 404
+
+    conversations[conversation_id]['messages'].append({'sender': 'provider', 'message': message})
+    return jsonify({'message': message}), 200
 
 if __name__ == '__main__':
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
